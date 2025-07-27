@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>Random Password Generator</title>
+<style>
+  body {
+    margin: 0;
+    height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background: linear-gradient(to right, #00111f, #00965e);
+    font-family: Arial, sans-serif;
+    color: white;
+  }
+
+  .container {
+    text-align: center;
+  }
+
+  h2 {
+    font-weight: 400;
+    margin-bottom: 0;
+  }
+
+  h3 {
+    color: #e14e9a;
+    margin-top: 0;
+    margin-bottom: 15px;
+    text-decoration: underline;
+  }
+
+  input[type="text"] {
+    width: 300px;
+    padding: 10px 15px;
+    font-size: 18px;
+    border-radius: 5px;
+    border: none;
+    outline: none;
+  }
+
+  button {
+    margin-top: 15px;
+    background: #e14e9a;
+    border: none;
+    padding: 10px 20px;
+    color: white;
+    font-weight: 500;
+    cursor: pointer;
+    border-radius: 5px;
+    font-size: 16px;
+  }
+
+  button:hover {
+    background: #b8367a;
+  }
+</style>
+</head>
+<body>
+  <div class="container">
+    <h2>Generate a</h2>
+    <h3>Random Password</h3>
+    <input type="text" id="password" readonly />
+    <br />
+    <button onclick="generatePassword()">Generate Password</button>
+  </div>
+
+<script>
+  function generatePassword() {
+    const length = 8;
+    const chars = 'ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789!@#$%^&*()_+[]{}|;:,.<>?';
+    let password = '';
+
+    for (let i = 0; i < length; i++) {
+      const randomIndex = Math.floor(Math.random() * chars.length);
+      password += chars[randomIndex];
+    }
+
+    document.getElementById('password').value = password;
+  }
+
+  // Generate one password on page load
+  generatePassword();
+</script>
+</body>
+</html>
+
